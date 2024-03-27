@@ -3,11 +3,9 @@ import mongoose from 'mongoose'
 const ClientSchema = new mongoose.Schema({
     nombre: {
         type: String,
-        required:true
     },
     descripcion:{
         type: String,
-        required:true
     },
     direccion:{
         type: String,
