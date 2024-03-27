@@ -4,6 +4,7 @@ import authRoutes from './routes/auth.routes.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import clientRoutes from './routes/client.routes.js'
+import contactRoutes from './routes/contact.routes.js'
 
 const app = express()
 
@@ -16,5 +17,6 @@ app.use(cookieParser())
 
 app.use("/api", authRoutes);
 app.use(clientRoutes)
+app.use(contactRoutes)
 
 export default app
