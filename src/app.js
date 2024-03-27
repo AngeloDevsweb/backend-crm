@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import authRoutes from './routes/auth.routes.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import clientRoutes from './routes/client.routes.js'
 
 const app = express()
 
@@ -14,5 +15,6 @@ app.use(cookieParser())
 
 
 app.use("/api", authRoutes);
+app.use(clientRoutes)
 
 export default app
