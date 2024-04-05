@@ -6,6 +6,7 @@ import cors from 'cors'
 import clientRoutes from './routes/client.routes.js'
 import contactRoutes from './routes/contact.routes.js'
 import activityRoutes from './routes/activity.routes.js'
+import contratRoutes from './routes/contrat.routes.js'
 
 const app = express()
 
@@ -20,5 +21,6 @@ app.use("/api", authRoutes);
 app.use(clientRoutes)
 app.use(contactRoutes)
 app.use(activityRoutes)
+app.use(contratRoutes)
 
 export default app
