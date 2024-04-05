@@ -9,8 +9,8 @@ router.get('/api/contrats', authRequired, getContrats)
 router.post('/api/contrats', authRequired, createContrat)
 
 //rutas con id
-router.get('/api/contrats', authRequired, getOneContrat)
-router.delete('/api/contrats', authRequired, deleteContrat)
-router.put('/api/contrats', authRequired, updateContrat)
+router.get('/api/contrats/:id', authRequired, getOneContrat)
+router.delete('/api/contrats/:id', authRequired, deleteContrat)
+router.put('/api/contrats/:id', authRequired, updateContrat)
 
 export default router;

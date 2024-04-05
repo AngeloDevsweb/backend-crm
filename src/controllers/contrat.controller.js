@@ -18,24 +18,34 @@ export const getOneContrat = async(req, res)=>{
     res.json(contrat)
 }
 
-export const createContrat = async(req, res)=>{
-    const {titulo,fechaInicio,fechaFin, monto, estado, opcion, clientId} = req.body
+export const createContrat = async (req, res) => {
+  const { titulo,descripcion, fechaInicio, fechaFin, monto, estado, opcion, clientId } =
+    req.body;
 
-    try {
-        const existingClient = await Client.findById(clientId)
-        if(!existingClient) return res.status(404).json({message:'client not found'})
+  try {
+    const existingClient = await Client.findById(clientId);
+    if (!existingClient)
+      return res.status(404).json({ message: "client not found" });
 
-        //crear el contrato 
-        const newContrat = new Contrat({
-            titulo,fechaInicio,fechaFin, monto, estado, opcion, clientId: existingClient._id,user: req.user.id
-        })
-        const savedContrat = await newContrat.save()
-        res.json(savedContrat)
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-}
+    //crear el contrato
+    const newContrat = new Contrat({
+      titulo,
+      descripcion,
+      fechaInicio,
+      fechaFin,
+      monto,
+      estado,
+      opcion,
+      client: existingClient._id, // Asignar el ID del cliente
+      user: req.user.id,
+    });
+    const savedContrat = await newContrat.save();
+    res.json(savedContrat);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
 export const deleteContrat = async(req, res)=>{
     const deletedContrat = await Contrat.findByIdAndDelete(req.params.id)
